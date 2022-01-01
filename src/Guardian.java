@@ -13,6 +13,10 @@ public class Guardian {
         this.creditCardNumber = creditCardNumber;
     }
 
+    public boolean GrantPermission(){
+        return true;
+    }
+
 
 
 
