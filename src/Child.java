@@ -1,5 +1,6 @@
 public class Child {
 
+    private  int age;
     private String fullName;
     private Bracelet bracelet;
     private Guardian parent;
@@ -9,11 +10,20 @@ public class Child {
     private int password;
     private boolean isRegistered = false;
 
-    public Child(String fullName, Bracelet bracelet, Guardian parent, int id) {
+    public Child(String fullName, Bracelet bracelet, Guardian parent, int id,int age) {
         this.fullName = fullName;
         this.bracelet = bracelet;
         this.parent = parent;
         this.id = id;
+        this.age=age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setPassword(int password) {
+        this.password = password;
     }
 
     public int getPassword() {

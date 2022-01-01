@@ -8,9 +8,25 @@ public class Guardian {
 
 
     public Guardian(ParkAccount account, ArrayList<Child> children, String creditCardNumber) {
+        this.children=new ArrayList<Child>();
         this.account = account;
         this.children = children;
         this.creditCardNumber = creditCardNumber;
+    }
+
+    public Guardian(ParkAccount account, String creditCardNumber) {
+        this.account = account;
+        this.creditCardNumber = creditCardNumber;
+        children=new ArrayList<Child>();
+
+    }
+
+    public ArrayList<Child> getChildren() {
+        return children;
+    }
+
+    public String getCreditCardNumber() {
+        return creditCardNumber;
     }
 
     public boolean GrantPermission(){
