@@ -19,6 +19,21 @@ public class ePark {
     private ArrayList<Child> children;
     private ArrayList<Device> devices;
 
+    public static Scanner getReader() {
+        return reader;
+    }
+
+    public ArrayList<Guardian> getGuardians() {
+        return guardians;
+    }
+
+    public ArrayList<Child> getChildren() {
+        return children;
+    }
+
+    public ArrayList<Device> getDevices() {
+        return devices;
+    }
 
     public ePark(String name) {
         this.name = name;
@@ -119,5 +134,35 @@ public class ePark {
 
         }
 
+    }
+
+    public void addDevice(ArrayList<Device> deviceArrayList){
+        System.out.println("Which devices would like to add?");
+
+
+    }
+
+    public void RemoveDevice(){
+
+    }
+
+    public void ChooseDevice(Device device){
+
+    }
+
+    public void retrieve_eTicket(int id, int password){
+        boolean retrieved = false;
+        for (int i = 0; i < this.getChildren().size(); i++) {
+            if(this.getChildren().get(i).getId() == id && this.getChildren().get(i).getPassword() == password){
+                this.getChildren().get(i).geteTicket().display_eTicket();
+                retrieved = true;
+            }
+        }
+        if(retrieved == true){
+            return;
+        }
+        else{
+            System.out.println("Did not find the ticket");
+        }
     }
 }
