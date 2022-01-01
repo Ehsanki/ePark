@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ePark {
     /**
@@ -38,6 +41,72 @@ public class ePark {
         systemObjects.add(d3);
         ////////////////
 
+    }
+
+
+    public void registerChild()
+    { /**
+        Take Child Details from a Guardian ,
+        and register the child to ePark
+     */
+    String fullName=enterChildFullName();
+
+
+
+
+
+
+
+
+    }
+
+    private String enterChildFullName() {
+        /** This method Takes child name from guardian ,
+         * verify details ,
+         * */
+        String firstName, lastName;
+        boolean wrongInput;
+        do {
+            wrongInput=false;
+            System.out.println("Fill Out Registration From");
+            System.out.println("Enter Child's First Name :- ");
+            firstName = reader.nextLine();
+            System.out.println("Enter Child's Last Name :- ");
+            lastName = reader.nextLine();
+
+            boolean fNameIsValid=checkName(firstName);
+            boolean lNameIsValid=checkName(lastName);
+
+            if( !fNameIsValid || !lNameIsValid)
+            {
+                System.out.println("Wrong Details : ");
+                if(!fNameIsValid) System.out.println(ConsoleColors.RED+"inValid First Name !"+ ConsoleColors.RESET);
+                if(!lNameIsValid) System.out.println(ConsoleColors.RED+"inValid Last Name !"+ ConsoleColors.RESET);
+
+                System.out.println(ConsoleColors.YELLOW_BOLD+"Please ReFill The From."+ ConsoleColors.RESET);
+                wrongInput=true;
+
+            }
+
+        } while(wrongInput);
+
+
+
+        return firstName+" "+lastName;
+
+
+
+    }
+
+    private boolean checkName(String firstName) {
+        /** INPUT - string first name
+         * checks if Name is valid Using Regex
+         * return Boolean
+         * */
+        String nameRegex="[a-zA-Z]{2,}(?: [A-Z][a-z]*)*$";
+        Pattern pVar=Pattern.compile(nameRegex);
+        Matcher mVar = pVar.matcher(firstName);
+        return mVar.matches();
     }
 
 

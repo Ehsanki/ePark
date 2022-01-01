@@ -23,6 +23,7 @@ public class Main {
             switch (choice)
             {
                 case 1: // for Right Angled Triangle
+                    park.registerChild();
                     break;
                 case 2:
                     break;
