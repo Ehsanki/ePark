@@ -10,6 +10,27 @@ public class eTicket {
     private ArrayList<Device> devicesEntries;
     private Date expireDate;
 
+
+    public eTicket(int age, int weight, double height, ArrayList<Device> devicesEntries, Date expireDate) {
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
+        this.status = status;
+        this.devicesEntries = devicesEntries;
+        this.expireDate = expireDate;
+        devicesEntries=new ArrayList<Device>();
+        ePark.systemObjects.add(this);
+    }
+
+    public eTicket(int age, int weight, double height) {
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
+        expireDate=null;
+        devicesEntries=new ArrayList<Device>();
+        ePark.systemObjects.add(this);
+    }
+
     public int getAge() {
         return age;
     }
@@ -34,30 +55,17 @@ public class eTicket {
         return expireDate;
     }
 
+
+    public void setExpireDate(Date expireDate) {
+        this.expireDate = expireDate;
+    }
+
     public void setWeight(int weight) {
         this.weight = weight;
     }
 
     public void setHeight(double height) {
         this.height = height;
-    }
-
-    public eTicket(int age, int weight, double height, ArrayList<Device> devicesEntries, Date expireDate) {
-        this.age = age;
-        this.weight = weight;
-        this.height = height;
-        this.status = status;
-        this.devicesEntries = devicesEntries;
-        this.expireDate = expireDate;
-        devicesEntries=new ArrayList<Device>();
-    }
-
-    public eTicket(int age, int weight, double height) {
-        this.age = age;
-        this.weight = weight;
-        this.height = height;
-        expireDate=null;
-        devicesEntries=new ArrayList<Device>();
     }
 
     public void display_eTicket(){

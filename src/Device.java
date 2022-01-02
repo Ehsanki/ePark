@@ -4,7 +4,9 @@ public class Device {
     private double minHeight;
     private int minWeight;
     private String name;
-    // Opening Hour
+
+
+// Opening Hour
     // Closing Hour
 
     private boolean isValid; // ?? Do we need this ?
@@ -19,7 +21,7 @@ public class Device {
         this.minWeight = minWeight;
         this.isExtreme = isExtreme;
         this.price = price;
-
+        ePark.systemObjects.add(this);
     }
 
     public Device(String name,int minAge, double minHeight, int minWeight, boolean isExtreme) {
@@ -28,8 +30,7 @@ public class Device {
         this.minHeight = minHeight;
         this.minWeight = minWeight;
         this.isExtreme = isExtreme;
-
-
+        ePark.systemObjects.add(this);
     }
 
     @Override
@@ -63,6 +64,10 @@ public class Device {
 
     public boolean isExtreme() {
         return isExtreme;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public float getPrice() {

@@ -1,4 +1,7 @@
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -30,13 +33,10 @@ public class ePark {
         d1 = new Device("Mamba Ride", 12, 1.4, 0, true);
         d2 = new Device("Giant Wheel", 0, 0, 0, false);
         d3 = new Device("Carrousel", 8, 0, 0, false);
+        systemObjects.add(this);
         devices.add(d1);
         devices.add(d2);
         devices.add(d3);
-
-        systemObjects.add(d1);
-        systemObjects.add(d2);
-        systemObjects.add(d3);
         ////////////////
 
     }
@@ -64,16 +64,14 @@ public class ePark {
         String fullName = enterChildFullName(); // 1-3
         int age = getChildAge();
 
-
-        String cardNumber = (String) getCardDetails().get(0); //4-5
-
+        List<Object> getDetails= getCardDetails();
+        String cardNumber = (String) getDetails.get(0); //4-5
+        Integer CardLimit = (Integer) getDetails.get(1);
         boolean creditCardAuth = MasterCard.getPermission(cardNumber); // 6-7//
-
-        ParkAccount guardAccount = new ParkAccount();
-
         Bracelet brace = new Bracelet();
         Guardian guardian=null;
         boolean guardianExist = false;
+
         // 8 Check if Guardian Exist before making new one
         for (Guardian g : guardians
         ) {
@@ -83,21 +81,21 @@ public class ePark {
                 break;
             }
         }
+        ParkAccount guardAccount = new ParkAccount(0, CardLimit);
         if(!guardianExist){
              guardian = new Guardian(guardAccount, cardNumber);
         }
 
         Child child = new Child(fullName, brace, guardian, childId++, age);
-
-        systemObjects.add(child);
-        systemObjects.add(guardian);
-
         guardians.add(guardian);
         children.add(child);
         guardian.getChildren().add(child);
 
         //10
         eTicket childTicket = new eTicket(age, 0, 0);
+        child.seteTicket(childTicket);
+        Date dNow = new Date(1996,10,30);
+        childTicket.setExpireDate(dNow);
 
         //11-12
         setHeightWeight(childTicket);

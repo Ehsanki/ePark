@@ -10,12 +10,17 @@ public class Child {
     private int password;
     private boolean isRegistered = false;
 
-    public Child(String fullName, Bracelet bracelet, Guardian parent, int id,int age) {
+    public Child(String fullName, Bracelet bracelet, Guardian parent, int id, int age) {
         this.fullName = fullName;
         this.bracelet = bracelet;
         this.parent = parent;
         this.id = id;
         this.age=age;
+        ePark.systemObjects.add(this);
+    }
+
+    public void seteTicket(eTicket eTicket) {
+        this.eTicket = eTicket;
     }
 
     public int getAge() {
