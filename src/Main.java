@@ -6,7 +6,6 @@ public class Main {
 
     public static void main(String[] args) {
         ePark park=new ePark("Safari");
-        park.ShowObjects();
         int choice; // for storing user's choice
         int inner_add_remove;
         Scanner sc = new Scanner(System.in); // creating object of Scanner class
@@ -108,6 +107,30 @@ public class Main {
                     }
                     break;
                 case 3:
+                    System.out.println("Please Enter Child ID :- ");
+                    int Id=sc.nextInt();
+                    Guardian temp=null;
+                    for (Child c: park.getChildren()
+                         ) {
+                        if(c.getId()==Id)
+                        {
+                            temp=c.getParent();
+                            break;
+                        }
+                    }
+                    if(temp!=null)
+                    {
+                        temp.exitPark(Id);
+                        System.out.println(ConsoleColors.GREEN_BOLD+"Child Exit successfully !!"+ConsoleColors.RESET);
+                    }
+                    else
+                    {
+                        System.out.println(ConsoleColors.RED+"YOUR CHILD IS LOST HE IS NOT IN OUR PARK !!"+ConsoleColors.RESET);
+                    }
+
+
+
+
                     break;
                 case 4:
                     // exiting from the switch-case as well as from the while loop using its label lp

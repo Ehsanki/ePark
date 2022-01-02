@@ -83,7 +83,7 @@ public class ePark {
         }
         ParkAccount guardAccount = new ParkAccount(0, CardLimit);
         if(!guardianExist){
-             guardian = new Guardian(guardAccount, cardNumber);
+             guardian = new Guardian(guardAccount, cardNumber,this);
         }
 
         Child child = new Child(fullName, brace, guardian, childId++, age);
@@ -119,7 +119,7 @@ public class ePark {
         weight = reader.nextInt();
 
         childTicket.setHeight(height);
-        childTicket.setHeight(weight);
+        childTicket.setWeight(weight);
 
 
     }
@@ -252,4 +252,33 @@ public class ePark {
     }
 
 
+    public void exitPark(int id) {
+        Bracelet bracelet=null;
+        Child child=null;
+        String cardNum=null;
+        for (Child ch:children)
+        {
+            if(ch.getId()==id)
+            {
+                child=ch;
+                cardNum=ch.getParent().getCreditCardNumber();
+                bracelet= ch.getParent().returnBracelet(id);
+            }
+
+        }
+        if(bracelet==null)
+        {
+            return;
+        }
+        int TotalAmount=child.geteTicket().getTotalAmount();
+
+        children.remove(child);
+        MasterCard.chargeAccount(cardNum,TotalAmount);
+
+
+
+
+
+
+    }
 }

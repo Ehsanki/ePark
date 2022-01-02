@@ -7,6 +7,7 @@ public class Bracelet {
     private String location;
     private List<Device> allowedDevices;
 
+
     public Bracelet()
     {
         this.allowedDevices = new ArrayList<>();

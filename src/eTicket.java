@@ -11,6 +11,10 @@ public class eTicket {
     private Date expireDate;
 
 
+    public int getTotalAmount() {
+        return 10;
+    }
+
     public eTicket(int age, int weight, double height, ArrayList<Device> devicesEntries, Date expireDate) {
         this.age = age;
         this.weight = weight;

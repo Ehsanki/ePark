@@ -6,13 +6,14 @@ public class Guardian {
     private ParkAccount account;
     private ArrayList<Child> children;
     private String creditCardNumber;
+    private ePark park;
 
 
-    public Guardian(ParkAccount account, ArrayList<Child> children, String creditCardNumber) {
+    public Guardian(ParkAccount account,  String creditCardNumber, ePark park) {
         this.children=new ArrayList<Child>();
         this.account = account;
-        this.children = children;
         this.creditCardNumber = creditCardNumber;
+        this.park=park;
         ePark.systemObjects.add(this);
     }
 
@@ -175,6 +176,26 @@ public class Guardian {
             }
         }
         return false;
+    }
+
+    public void exitPark(int id) {
+
+        park.exitPark(id);
+    }
+    public Bracelet returnBracelet(int id)
+    {
+        Bracelet brace;
+        for(Child ch:children)
+        {
+            if(ch.getId()==id)
+            {
+                brace=ch.getBracelet();
+                children.remove(ch);
+                return brace;
+            }
+        }
+        return null;
+
     }
 
 //    public void ChooseDevice(Device device) {
