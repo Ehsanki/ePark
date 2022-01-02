@@ -94,6 +94,7 @@ public class ePark {
 
         guardians.add(guardian);
         children.add(child);
+        guardian.getChildren().add(child);
 
         //10
         eTicket childTicket = new eTicket(age, 0, 0);
@@ -225,6 +226,22 @@ public class ePark {
         return mVar.matches();
     }
 
+    public Guardian FindGuardian(int childId, int childPassword){
+        Guardian guardian=null;
+        boolean guardianExist = false;
+        for (Guardian g : guardians
+        ) {
+            for (int i = 0; i < g.getChildren().size(); i++) {
+                if (g.getChildren().get(i).getId() == childId && g.getChildren().get(i).getPassword() == childPassword ) {
+                    guardian = g;
+                    guardianExist = true;
+                    break;
+                }
+            }
+        }
+        return guardian;
+    }
+
 
     public void ShowObjects() {
 
@@ -236,32 +253,5 @@ public class ePark {
 
     }
 
-    public void addDevice(ArrayList<Device> deviceArrayList) {
-        System.out.println("Which devices would like to add?");
 
-
-    }
-
-    public void RemoveDevice() {
-
-    }
-
-    public void ChooseDevice(Device device) {
-
-    }
-
-    public void retrieve_eTicket(int id, int password) {
-        boolean retrieved = false;
-        for (int i = 0; i < this.getChildren().size(); i++) {
-            if (this.getChildren().get(i).getId() == id && this.getChildren().get(i).getPassword() == password) {
-                this.getChildren().get(i).geteTicket().display_eTicket();
-                retrieved = true;
-            }
-        }
-        if (retrieved == true) {
-            return;
-        } else {
-            System.out.println("Did not find the ticket");
-        }
-    }
 }

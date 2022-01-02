@@ -13,10 +13,6 @@ public class Bracelet {
     }
 
 
-
-
-
-
     public void addDevices(List<Device> newAllowedDevices) {
         if(newAllowedDevices != null) {
             for(Device device : newAllowedDevices){

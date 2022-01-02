@@ -10,6 +10,30 @@ public class eTicket {
     private ArrayList<Device> devicesEntries;
     private Date expireDate;
 
+    public int getAge() {
+        return age;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public ArrayList<Device> getDevicesEntries() {
+        return devicesEntries;
+    }
+
+    public Date getExpireDate() {
+        return expireDate;
+    }
+
     public void setWeight(int weight) {
         this.weight = weight;
     }
@@ -51,22 +75,7 @@ public class eTicket {
 
     }
 
-    public ArrayList<Device> get_suitable_devices(ePark park){
-        ArrayList<Device> devicesToDisplay = new ArrayList<>();
-        int counter = 0;
-        System.out.println("These are the devices the child is allowed to go on:");
-        for (int i = 0; i < park.getDevices().size(); i++) {
-            if(park.getDevices().get(i).getMinAge() <= age && park.getDevices().get(i).getMinHeight() <= height && park.getDevices().get(i).getMinWeight() <= weight){
-                devicesToDisplay.add(park.getDevices().get(i));
-                System.out.println("Device number" + counter + ": ");
-                counter++;
-                System.out.println(park.getDevices().get(i).toString());
-                System.out.println("----------------------------------------------");
-            }
-        }
-        return devicesToDisplay;
 
-    }
 
 
 
