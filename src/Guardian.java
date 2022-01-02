@@ -122,6 +122,7 @@ public class Guardian {
                     }
                     if(answer.equalsIgnoreCase("N")){
                         System.out.println("Very well. the device will not be added!");
+                        return false;
                     }
                     if(answer.equalsIgnoreCase("N") == false &&  answer.equalsIgnoreCase("Y") == false){
                         System.out.println("Please enter Y or N");
